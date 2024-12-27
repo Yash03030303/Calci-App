@@ -79,7 +79,11 @@ export default function App() {
         ].map((item) => (
           <TouchableOpacity
             key={item}
-            style={[styles.button, themeStyles.button]}
+            style={[
+              styles.button,
+              themeStyles.button,
+              item === '=' && { backgroundColor: 'green' }, // Green background for "=" button
+            ]}
             onPress={() => handlePress(item)}
           >
             <Text style={[styles.buttonText, themeStyles.text]}>{item}</Text>
@@ -111,6 +115,9 @@ export default function App() {
           ))}
         </View>
       )}
+
+      {/* Footer Text */}
+      <Text style={styles.footerText}>Calci by Yash</Text>
     </View>
   );
 }
@@ -128,7 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   themeText: {
-    fontSize: 12, // Reduced text size for light/dark mode
+    fontSize: 12, 
   },
   input: {
     fontSize: 32,
@@ -204,5 +211,11 @@ const styles = StyleSheet.create({
     button: {
       backgroundColor: '#666666', // Dark faint grey for buttons
     },
+  },
+  footerText: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#888',
   },
 });
